@@ -1,19 +1,33 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import {FlatList, SafeAreaView, StyleSheet, Text, View} from 'react-native';
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-    </View>
-  );
+    return (
+        <SafeAreaView style={styles.safeArea}>
+            <FlatList data={[
+                {key: "a", value: "b"},
+            ]} renderItem={({item}) =>
+                <View style={styles.item}>
+                    <Text style={styles.title}>{item.key}</Text>
+                    <Text style={styles.description}>{item.value}</Text>
+                </View>
+            }/>
+        </SafeAreaView>
+    );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+    safeArea: {
+        flex: 1,
+    },
+    item: {
+        padding: 16,
+    },
+    title: {
+        fontSize: 16,
+        marginBottom: 8,
+    },
+    description: {
+        fontSize: 12,
+    }
 });

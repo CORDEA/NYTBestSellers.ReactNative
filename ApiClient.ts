@@ -15,4 +15,10 @@ export class ApiClient {
             headers: this.headers()
         })
     }
+
+    getListNames(): Promise<Response> {
+        return fetch(ApiClient.GET_LIST_NAMES_PATH, {
+            headers: this.headers()
+        })
+    }
 }

@@ -16,21 +16,21 @@ export class ApiClient {
         return this.instance
     }
 
-    private headers() {
-        let headers = new Headers();
-        headers.append("api-key", "");
-        return headers
+    private buildUrl(path: string, query: Map<string, string>): string {
+        let url = path + "?api-key=" + "";
+        query.forEach((value, key) => {
+            url += "&" + key + "=" + value
+        });
+        return url;
     }
 
     getLists(list: string): Promise<Response> {
-        return fetch(ApiClient.GET_LISTS_PATH, {
-            headers: this.headers()
-        })
+        let query = new Map();
+        query.set("list", list);
+        return fetch(this.buildUrl(ApiClient.GET_LISTS_PATH, query))
     }
 
     getListNames(): Promise<Response> {
-        return fetch(ApiClient.GET_LIST_NAMES_PATH, {
-            headers: this.headers()
-        })
+        return fetch(this.buildUrl(ApiClient.GET_LIST_NAMES_PATH, new Map<string, string>()))
     }
 }

@@ -1,6 +1,6 @@
 import {ListsResponse} from "./response/ListsResponse";
 
-class MainListItemModel {
+export class MainListItemModel {
     title: string;
     description: string;
     position: number;

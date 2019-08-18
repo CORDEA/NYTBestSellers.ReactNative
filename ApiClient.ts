@@ -1,3 +1,5 @@
+import { API_KEY } from 'react-native-dotenv';
+
 export class ApiClient {
     private static readonly BASE_URL = "https://api.nytimes.com/";
     private static readonly BASE_PATH = "svc/books/v3";
@@ -17,7 +19,7 @@ export class ApiClient {
     }
 
     private buildUrl(path: string, query: Map<string, string>): string {
-        let url = path + "?api-key=" + "";
+        let url = path + "?api-key=" + API_KEY;
         query.forEach((value, key) => {
             url += "&" + key + "=" + value
         });

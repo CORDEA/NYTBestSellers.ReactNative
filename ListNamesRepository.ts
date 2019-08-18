@@ -1,7 +1,7 @@
 import {ApiClient} from "./ApiClient";
 import {ListNamesResponse} from "./response/ListNamesResponse";
 
-class ListNamesRepository {
+export class ListNamesRepository {
     private static instance: ListNamesRepository;
     private client = ApiClient.getInstance();
 

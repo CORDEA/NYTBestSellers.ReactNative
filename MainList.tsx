@@ -4,12 +4,19 @@ import {MainListItem} from "./MainListItem";
 import {ListsRepository} from "./ListsRepository";
 import {MainListItemModel} from "./MainListItemModel";
 
-export class MainList extends React.PureComponent {
+interface Props {
+    value: string;
+}
+
+export class MainList extends React.PureComponent<Props> {
     state: { data: MainListItemModel[] } = {data: []};
 
-    componentDidMount(): void {
+    private refresh() {
+        if (!this.props.value) {
+            return
+        }
         ListsRepository.getInstance()
-            .getLists("")
+            .getLists(this.props.value)
             .then(response => MainListItemModel.from(response))
             .then(models => {
                 this.setState(state => {
@@ -20,6 +27,7 @@ export class MainList extends React.PureComponent {
     }
 
     render() {
+        this.refresh();
         return (
             <FlatList
                 data={this.state.data}

@@ -1,19 +1,8 @@
 import React from 'react';
-import {SafeAreaView, StyleSheet} from 'react-native';
-import {MainList} from "./MainList";
-import {MainPicker} from "./MainPicker";
+import {MainComponent} from "./MainComponent";
 
 export default function App() {
     return (
-        <SafeAreaView style={styles.safeArea}>
-            <MainPicker/>
-            <MainList/>
-        </SafeAreaView>
+        <MainComponent/>
     );
 }
-
-const styles = StyleSheet.create({
-    safeArea: {
-        flex: 1,
-    },
-});

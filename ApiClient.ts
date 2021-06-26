@@ -1,4 +1,4 @@
-import { API_KEY } from 'react-native-dotenv';
+import {API_KEY} from '@env';
 
 export class ApiClient {
     private static readonly BASE_URL = "https://api.nytimes.com/";
